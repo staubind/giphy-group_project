@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
-import creaeteSagaMiddleware from 'redux-saga';
+import createSagaMiddleware from 'redux-saga';
 import {takeEvery, put} from 'redux-saga/effects';
-import { createStoreHook, combineReducers, applyMiddleware } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware } from 'react-redux';
 import logger from 'redux-logger';
 import axios from 'axios';
 
-const sagaMiddleware = creaeteSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
 function* rootSaga() {
 // rootsaga listens for SearchGif & favoriteGif dispatch
@@ -50,7 +50,7 @@ const search = (state = [], action) => {
 }
 
 
-const storeInstance = createStor(
+const storeInstance = createStore(
     combineReducers({
         search
     }),
