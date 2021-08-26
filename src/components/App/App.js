@@ -12,8 +12,6 @@ const addGif = (giphy_link) => {
   });
 };
 
-
-
   return (
     <div>
      <img src={random.image_url}/>
