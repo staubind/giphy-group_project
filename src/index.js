@@ -3,7 +3,23 @@ import ReactDOM from 'react-dom';
 import App from './components/App/App';
 
 
-yield takeEvery('SEARCH_GIF', searchGif); // rootsaga listens for SearchGif dispatch
+function* rootSaga() {
+// rootsaga listens for SearchGif & favoriteGif dispatch
+yield takeEvery('ADD_FAVORITE', favoriteGif);
+yield takeEvery('SEARCH_GIF', searchGif);
+}
+
+function* favoriteGif(action) {
+    console.log('bout to add a new favorite')
+    try {
+        const response = yield axios.post('/routes/favorite.router', action.payload);
+            console.log('POST /routes/favorite.router', response.data);
+    }
+    catch (err) {
+        console.log('favoriteGif has failed', error);
+        alert('favoriteGif was unable to add a favorite gif');
+    }
+};
 
 function* searchGif (action) {
     console.log('searchGig', action.payload)
