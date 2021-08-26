@@ -19,3 +19,4 @@ const addGif = (giphy_link) => {
         );
 };
 export default Favorites;
+
