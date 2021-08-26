@@ -17,12 +17,11 @@ const addGif = (giphy_link) => {
 
   return (
     <div>
-      <h1>Giphy Search!</h1>
-      <img src={random.image_url}
-      <button onClick={fetchGifs}> New Gif</button>
-      <button onClick={(event) => addGif('random.image_url')}>Favorite</button>
+     <img src={random.image_url}/>
+     <button onClick={fetchGifs}> New Gif</button>
+     <button onClick={(event) => addGif('random.image_url')}>Favorite</button>
     </div>
-  );
-}
-
+  )
+  
+  }
 export default App;
