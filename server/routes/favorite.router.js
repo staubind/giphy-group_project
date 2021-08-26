@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 
 const router = express.Router();
 
-// return all favorite images
+// return all favorite images  //GET CALL FOR GIFFY API
 router.get('/', (req, res) => {
   res.sendStatus(200);
 });
