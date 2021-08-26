@@ -7,24 +7,6 @@ function Search() {
     const [search, setNewSearch] =useState('')  //NEED 
     
     
-    useEffect(()=>{
-      getSearch();
-    }, [])
-  
-    const getSearch =()=> {
-      axios.get('/search')
-        .then(response =>{
-          console.log('In search', response.data);
-          let data = response.data.data.embed_url  
-          dispatch({
-            type:'SET_SEARCH',
-            payload: data
-          });
-        })
-        .catch(error =>{
-          console.log('In random error', error);
-        });
-    }
    const submitSearch = event =>{
      event.preventDefault();
      dispatch({
