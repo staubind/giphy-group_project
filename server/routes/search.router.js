@@ -12,10 +12,10 @@ router.get('/', (req,res)=>{
     
         axios({
           method: 'GET',
-          url:'https://api.giphy.com/v1/gifs/search',
+          url: `https://api.giphy.com/v1/gifs/search?q=${newSearch}`,
         params: {
           api_key: '5WEEIzmjn7QP0xhhODK1Qc55k7p0RqKb',
-          q:{search}
+          // q:{search}
         }
       }).then(response => {
         console.log('In response', response.data);

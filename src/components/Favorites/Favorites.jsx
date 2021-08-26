@@ -13,9 +13,10 @@ const addGif = (giphy_link) => {
 };
     return (
             <div>
-                <img src={random.image_url} />
-                <button onClick={(event) => addGif({ image_url })}>Favorite</button>
+                {/* <img src={random.image_url} />
+                <button onClick={(event) => addGif({ image_url })}>Favorite</button> */}
             </div>
         );
 };
 export default Favorites;
+

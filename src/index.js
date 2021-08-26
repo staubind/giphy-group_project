@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './components/App/App';
 import createSagaMiddleware from 'redux-saga';
 import {takeEvery, put} from 'redux-saga/effects';
-import { createStore, combineReducers, applyMiddleware } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 import axios from 'axios';
+import { Provider } from 'react-redux'
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -28,7 +29,7 @@ function* favoriteGif(action) {
 };
 
 function* searchGif (action) {
-    console.log('searchGig', action.payload)
+    console.log('made it to searchGif on index.js')
     try{
         const response = yield axios.get(`/search?q=${action.payload}`) //q is from giphy documentation
         
@@ -59,4 +60,4 @@ const storeInstance = createStore(
 
 sagaMiddleware.run(rootSaga)
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
