@@ -4,7 +4,7 @@ import {useState} from 'react';
 
 function Search() {
     const dispatch = useDispatch();
-    // const search = useSelector(store=>store.search); //NEED SEARCH REDUCER
+    const search = useSelector(store=>store.search); //NEED SEARCH REDUCER
     
     const [newSearch, setNewSearch] =useState('')  //NEED 
     
@@ -13,7 +13,7 @@ function Search() {
      event.preventDefault();
      console.log('we are about to dispatch our query');
      dispatch({
-       type: 'SEARCH_GIF',   //NEED IN INDEX.JS
+       type: 'SAGA_SEARCH_GIF',   //NEED IN INDEX.JS
        payload: newSearch
      });
      setNewSearch('');
@@ -36,6 +36,7 @@ function Search() {
             onChange={handleChange}
           ></input>
           <button type="submit">SUBMIT</button>
+          {search.map(element =><iframe src={element.embed_url}/>)}
         </form> 
     </div>
   );

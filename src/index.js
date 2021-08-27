@@ -13,7 +13,7 @@ const sagaMiddleware = createSagaMiddleware();
 function* rootSaga() {
 // rootsaga listens for SearchGif & favoriteGif dispatch
 yield takeEvery('ADD_FAVORITE', favoriteGif);
-yield takeEvery('SEARCH_GIF', searchGif);
+yield takeEvery('SAGA_SEARCH_GIF', searchGif);
 }
 
 function* favoriteGif(action) {
@@ -30,21 +30,28 @@ function* favoriteGif(action) {
 
 function* searchGif (action) {
     console.log('made it to searchGif on index.js')
+    console.log(action.payload);
     try{
-        const response = yield axios.get(`/search?q=${action.payload}`) //q is from giphy documentation
+        const response = yield axios.get('/api/search', {
+           params: {searchWord: action.payload} 
+        }) //q is from giphy documentation
         
         yield put({
             type: 'SEARCH_GIF', 
             payload: response.data})
-    }catch (error) {
-        console.log('searchGif error', error);
+        }catch (error){
+            console.log('searchGif error', error);
+        }   
     }
-}
+    
+  
 
 //reducer for searching
 const search = (state = [], action) => {
     if(action.type === 'SEARCH_GIF') {
+        console.log(action.payload.data);
         return action.payload.data;
+        
     }
     return state;
 
