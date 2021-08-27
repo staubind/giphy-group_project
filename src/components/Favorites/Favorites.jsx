@@ -18,7 +18,7 @@ function Favorites() {
 
     return (
             <>
-                {favorites.map(element => <iframe src={element.giphy_link} />)}
+                {favorites.map(element => <iframe key={element.id} src={element.giphy_link} />)}
             </>
         );
 };
