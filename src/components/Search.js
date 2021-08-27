@@ -4,9 +4,9 @@ import {useState} from 'react';
 
 function Search() {
     const dispatch = useDispatch();
-    const search = useSelector(store=>store.search); //NEED SEARCH REDUCER
+    const search = useSelector(store => store.search); //NEED SEARCH REDUCER
     
-    const [newSearch, setNewSearch] =useState('')  //NEED 
+    const [newSearch, setNewSearch] = useState('')  //NEED 
     
     
    const submitSearch = event =>{
@@ -24,7 +24,13 @@ function Search() {
     setNewSearch(event.target.value)
    }
 
-
+   const addFavorite = (giphy_link) => {
+    console.log('the selected gif is ', giphy_link);
+    dispatch({
+    type: 'ADD_FAVORITE',
+    payload: { giphy_link: giphy_link }
+    });
+};
 
 
   return (
@@ -36,8 +42,15 @@ function Search() {
             onChange={handleChange}
           ></input>
           <button type="submit">SUBMIT</button>
-          {search.map(element =><iframe src={element.embed_url}/>)}
-        </form> 
+          </form> 
+            {search.map(element => {
+              return (
+                <>
+                  <iframe src={element.embed_url} />
+                  <button onClick={() => addFavorite(element.embed_url)}>Favorite It</button>
+                </>
+              );
+            })}
     </div>
   );
 }
