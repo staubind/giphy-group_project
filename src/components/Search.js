@@ -36,7 +36,7 @@ function Search() {
             onChange={handleChange}
           ></input>
           <button type="submit">SUBMIT</button>
-          search.map<iframe src={search.embed_url}/>
+          {search.map(element =><iframe src={element.embed_url}/>)}
         </form> 
     </div>
   );
