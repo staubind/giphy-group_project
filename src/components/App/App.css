@@ -1,0 +1,10 @@
+.app__page{
+    display:flex;
+    padding:125px;
+}
+.header{
+    text-align: center;
+    background-color: rgb(51, 62, 96);
+    color: white;
+    padding: 20px;
+}
