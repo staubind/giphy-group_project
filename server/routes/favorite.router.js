@@ -8,7 +8,14 @@ const router = express.Router();
 
 // return all favorite images  //GET CALL FOR GIFFY API
 router.get('/', (req, res) => {
-  res.sendStatus(200);
+  let sqlSearch = `SELECT * FROM "favorites"`;
+  pool.query(sqlSearch).then(dbResponse => {
+    console.log('the response from favorites database query is: ', dbResponse.rows);
+    res.send(dbResponse.rows)
+  }).catch(error => {
+    console.log('DB GET favorites failed.', error);
+    res.sendStatus(500);
+  })
 });
 
 // add a new favorite

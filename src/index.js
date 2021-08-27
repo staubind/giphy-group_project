@@ -14,6 +14,20 @@ function* rootSaga() {
 // rootsaga listens for SearchGif & favoriteGif dispatch
 yield takeEvery('ADD_FAVORITE', favoriteGif);
 yield takeEvery('SAGA_SEARCH_GIF', searchGif);
+yield takeEvery('FETCH_FAVORITES', fetchFavorites);
+}
+
+function* fetchFavorites() {
+    try {
+        const response = yield axios.get('/api/favorite')
+        yield put({
+            type: 'SET_FAVORITES',
+            payload:  response.data
+        })
+    } catch(error) {
+        console.log('Failed to GET favorites: ', error);
+        alert('Failed to GET favorites. See console for details.');
+    }
 }
 
 function* favoriteGif(action) {
@@ -57,10 +71,17 @@ const search = (state = [], action) => {
 
 }
 
+const favorites = (state = [], action) => {
+    if(action.type === 'SET_FAVORITES') {
+        return action.payload;
+    }
+    return state;
+}
 
 const storeInstance = createStore(
     combineReducers({
-        search
+        search,
+        favorites
     }),
     applyMiddleware(logger, sagaMiddleware)
 );
