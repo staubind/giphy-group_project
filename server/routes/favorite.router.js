@@ -10,11 +10,12 @@ const router = express.Router();
 router.get('/', (req, res) => {
   let sqlSearch = `SELECT * FROM "favorites"`;
   pool.query(sqlSearch).then(dbResponse => {
-    res.send(dbResponse.data)
+    console.log('the response from favorites database query is: ', dbResponse.rows);
+    res.send(dbResponse.rows)
   }).catch(error => {
     console.log('DB GET favorites failed.', error);
+    res.sendStatus(500);
   })
-  res.sendStatus(200);
 });
 
 // add a new favorite

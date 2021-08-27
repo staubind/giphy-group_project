@@ -2,7 +2,6 @@ import React from 'react';
 import Favorites from '../Favorites/Favorites.jsx';
 import Search from '../Search.js';
 // import hashrouter, link, route
-import {} from 'react-router'
 
 function App(props) {
 

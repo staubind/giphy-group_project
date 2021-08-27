@@ -9,7 +9,6 @@ import {useEffect} from 'react';
 function Favorites() {
     const favorites = useSelector(state => state.favorites);
     const dispatch = useDispatch();
-
     useEffect(() => {
         // load our favorites
         dispatch({
@@ -19,7 +18,7 @@ function Favorites() {
 
     return (
             <>
-                {favorites.map(element => <iframe src={element.embed_url} />)}
+                {favorites.map(element => <iframe src={element.giphy_link} />)}
             </>
         );
 };
