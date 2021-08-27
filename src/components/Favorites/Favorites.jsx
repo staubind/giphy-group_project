@@ -1,16 +1,12 @@
 import React from "react";
 import { useDispatch } from 'react-redux'
 
-function Favorites() {
-const dispatch = useDispatch();
+//display favs
+// add category selection area
 
-const addGif = (giphy_link) => {
-    console.log('the selected gif is ', giphy_link);
-    dispatch({
-    type: 'ADD_FAVORITE',
-    payload: { giphy_link: giphy_link }
-    });
-};
+
+function Favorites() {
+
     return (
             <div>
                 {/* <img src={random.image_url} />

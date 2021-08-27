@@ -19,8 +19,8 @@ yield takeEvery('SAGA_SEARCH_GIF', searchGif);
 function* favoriteGif(action) {
     console.log('bout to add a new favorite')
     try {
-        const response = yield axios.post('/routes/favorite.router', action.payload);
-            console.log('POST /routes/favorite.router', response.data);
+        const response = yield axios.post('/api/favorite', action.payload);
+        console.log('POST /api/favorite', response.data);
     }
     catch (err) {
         console.log('favoriteGif has failed', error);
