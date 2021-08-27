@@ -1,7 +1,10 @@
 .app__page{
     display:flex;
-    padding:125px;
+    margin:auto 0;
+    padding-left: 10px;
+    background-color: rgb(197, 211, 237);
 }
+
 .header{
     text-align: center;
     background-color: rgb(51, 62, 96);

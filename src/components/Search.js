@@ -1,6 +1,7 @@
 import React from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {useState} from 'react';
+import "./Search.css";
 
 function Search() {
     const dispatch = useDispatch();
@@ -36,19 +37,26 @@ function Search() {
   return (
     <div>
         <form onSubmit={submitSearch}>
+          <div className="input">
           <input
             placeholder="Search"
             value={newSearch}
             onChange={handleChange}
           ></input>
-          <button type="submit">SUBMIT</button>
+          <button className="submit" type="submit">SUBMIT</button>
+          </div>
           </form> 
+          
             {search.map(element => {
               return (
                 <>
+                <div className="display">
                   <iframe src={element.embed_url} />
-                  <button onClick={() => addFavorite(element.embed_url)}>Favorite It</button>
+                  
+                  <button className="btn" onClick={() => addFavorite(element.embed_url)}>Favorite It</button>
+                  </div>
                 </>
+               
               );
             })}
     </div>

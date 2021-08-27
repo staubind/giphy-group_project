@@ -1,0 +1,26 @@
+.input{
+    /* text-align: center; */
+    padding: 5px;
+    
+}
+.display{
+    /* display: flex;
+    padding: 10px;
+    border:darkblue 25px; */
+    display: flex;
+    flex-wrap: wrap;
+    Font-Family: 'Work Sans', Sans-Serif;
+    Font-Size: 15px;
+    text-align: center;
+    color: gray;
+    padding: 10px;
+    
+}
+.btn{
+    color:white;
+    background-color: rgb(51, 62, 96);
+}
+.submit{
+    color:white;
+    background-color: rgb(51, 62, 96);
+}
